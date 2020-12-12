@@ -1,0 +1,12 @@
+DELIMITER //
+
+CREATE PROCEDURE usp_sumar (
+    IN p_n1 INT,
+    IN p_n2 INT,
+    OUT p_suma INT
+	)
+ BEGIN
+  SET p_suma := p_n1 + p_n2;
+ END;
+//
+----------------------------------------------------------------------------
