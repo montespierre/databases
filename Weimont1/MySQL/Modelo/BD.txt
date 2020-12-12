@@ -1,0 +1,77 @@
+create database sisComprasLF;
+
+use sisComprasLF;
+
+CREATE TABLE IF NOT EXISTS `compra` (
+  `idCompra` int(11) NOT NULL AUTO_INCREMENT,
+  `Persona_idPersona` int(11) NOT NULL,
+  `Producto_idProducto` int(11) NOT NULL,
+  `cantidadProductos` float NOT NULL,
+  `igv_calc` float DEFAULT NULL,
+  `montoTotal` float DEFAULT NULL,
+  PRIMARY KEY (`idCompra`),
+  KEY `fk_Compra_Persona_idx` (`Persona_idPersona`),
+  KEY `fk_Compra_Producto1_idx` (`Producto_idProducto`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`Persona_idPersona`, `Producto_idProducto`, `cantidadProductos`, `igv_calc`, `montoTotal`) VALUES
+(4, 4, 5, 3.6, 23.6),
+(2, 1, 8, 1.44, 9.44),
+(3, 2, 10, 3.6, 23.6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `persona`
+--
+
+
+CREATE TABLE IF NOT EXISTS `persona` (
+  `idPersona` int(11) NOT NULL AUTO_INCREMENT,
+  `nomPersona` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `apellidosPersona` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`idPersona`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`nomPersona`, `apellidosPersona`) VALUES
+('Paolo', 'Guerrero'),
+('Claudio', 'Pizarro'),
+('Cesar', 'Cueto'),
+('Teofilo', 'Cubillas'),
+('Juan Carlos', 'Oblitas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+
+CREATE TABLE IF NOT EXISTS `producto` (
+  `idProducto` int(11) NOT NULL AUTO_INCREMENT,
+  `nomProducto` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `precioProducto` float NOT NULL,
+  PRIMARY KEY (`idProducto`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`nomProducto`, `precioProducto`) VALUES
+('cafe', 5),
+('te', 4),
+('pan con pollo', 3),
+('pan con chicharron', 8),
+('pan con tamar', 2),
+('yogurt', 5),
+('pan con queso', 2);
+
