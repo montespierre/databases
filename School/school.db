@@ -1,0 +1,12 @@
+create database school;
+create table usuarios(id_usr int, user varchar(20), password varchar(50));
+create table token(id int auto_increment, token varchar(50), user varchar(20), fecha datetime, ip varchar(20), primary key(id));
+alter table usuarios add primary key(id_usr);
+
+insert into usuarios value (1, "admin", md5("catolica"));
+
+//privilegios
+grant all on school.* to user1@localhost identified by "catolica";
+flush privileges;
+
+http://localhost/PhpCrudApi/apiv1_1/
